@@ -3,11 +3,14 @@
 ng-repeat creates a new scope for each element it creates, so you don't have to worry about your controller's $scope variables clashing with ng-repeat's
 -->
 <div ng-repeat="post in posts">
-  <a ng-href="{{ post.url }}">{{post.title}}</div>
-<form ng-submit='submitPost()'>
+  <a ng-href="{{ post.url }}">{{ post.title }}</a>
+  <a ngiclick="deletePost($index)">delete</a>
+</div>
+
+<form ng-submit="submitPost()">
   <input type="text" ng-model="post.title" />
   <input type="text" ng-model="post.url" />
   <input type="submit" value="Add Post" />
 </form>
-Posts: {{posts}}<br />
-Post: {{post}}
+Posts: {{ posts }}<br />
+Post: {{ post }}
