@@ -1,5 +1,6 @@
 'use strict';
-
+/* global app:true */
+/* exported app */
 /**
  * @ngdoc overview
  * @name redditCloneApp
@@ -8,7 +9,7 @@
  *
  * Main module of the application.
  */
-angular
+var app = angular
   .module('redditCloneApp', [
     'ngAnimate',
     'ngCookies',
@@ -20,15 +21,15 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/posts.html',
+        controller: 'PostsCtrl'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+
       .otherwise({
         redirectTo: '/'
       });
