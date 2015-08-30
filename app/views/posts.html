@@ -2,9 +2,10 @@
 <!--
 ng-repeat creates a new scope for each element it creates, so you don't have to worry about your controller's $scope variables clashing with ng-repeat's
 -->
-<div ng-repeat="post in posts">
+<div ng-repeat="(postId, post) in posts">
   <a ng-href="{{ post.url }}">{{ post.title }}</a>
-  <a ngiclick="deletePost($index)">delete</a>
+  <a ngiclick="deletePost(postId)">delete</a>
+  <!-- deletePost($index)" -->
 </div>
 
 <form ng-submit="submitPost()">

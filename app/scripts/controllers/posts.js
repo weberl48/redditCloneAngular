@@ -8,12 +8,18 @@ app.controller('PostsCtrl', function ($scope, Post) {
       Post.save($scope.post);
       $scope.post = {url: 'http://', title: ''};
     };
-    $scope.deletePost = function (index) {
-      $scope.posts.splice(index, 1);
+    $scope.deletePost = function (postId) {
+      // $scope.posts.splice(index, 1);
+      Post.deletePost = function (postId){
+        Post.delete({id: postId}, function (){
+          delete $scope.posts[postId];
+        });
+      };
 };
 Post.save($scope.post, function (ref) {
   $scope.posts[ref.name] = $scope.post;
   $scope.post = {url: 'http://', title: ''};
 });
+
   });
 //controller for posts page
