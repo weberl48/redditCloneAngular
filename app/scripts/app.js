@@ -16,19 +16,22 @@ var app = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
+  .constant('FIREBASE_URL', 'https://brilliant-inferno-1363.firebaseio.com/posts/:id.json')
+
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/posts.html',
         controller: 'PostsCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
-      })
+
+      .when('/posts/:postId', {
+    templateUrl: 'views/showpost.html',
+    controller: 'PostViewCtrl'
+  })
 
       .otherwise({
         redirectTo: '/'
